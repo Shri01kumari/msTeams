@@ -1,0 +1,150 @@
+body {
+ /* background-color: rgb(185, 117, 248); */
+ background-color: #6264A7;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.home {
+  min-height: 90vh;
+  background-color: white;
+  border-radius: 5px;
+  margin: 5px;
+  display: grid;
+  align-items: center;
+}
+
+.home__heading {
+  padding: 10px;
+  background-color: white;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: center;
+  margin: 5px;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.home__heading__text {
+  /* font-family: "Nunito", sans-serif; */
+  font-family: 'Roboto', sans-serif;
+  font-size: 28px;
+  letter-spacing: 2px;
+  font-weight: 500;
+  /* box-shadow: rgba(155, 19, 143, 0.24) 0px 3px 8px; */
+  box-shadow: #abadf5 0px 3px 8px;
+  padding: 10px;
+  /* background-color: rgb(230, 204, 255); */
+  background-color:#898bc4;
+  border-radius: 16px;
+  border-bottom-right-radius: 0;
+}
+
+.home__heading__img {
+  height: 70px;
+  cursor: pointer;
+}
+
+.main__conatiner__home {
+  background-color: white;
+  padding: 5px;
+  border-radius: 5px;
+  margin: 5px !important;
+}
+
+.join__meeting__container {
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  padding: 10px;
+  height: 90%;
+  margin: 10px;
+  display: grid;
+  place-items: center;
+}
+
+.join__meeing {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.meeting-form {
+  text-align: center;
+}
+
+.input__label {
+  letter-spacing: 2px;
+  font-size: 20px;
+  font-weight: 800;
+  font-family: "Nunito", sans-serif;
+  padding: 4px;
+}
+
+.input {
+  text-align: center;
+  width: 70%;
+  outline: none;
+  border: 2px solid rgb(216, 190, 240);
+  border-radius: 5px;
+  font-family: "Nunito", sans-serif;
+  margin: 10px;
+  padding: 5px;
+  transition: all 0.4s ease-in-out;
+}
+
+.input:focus {
+  box-shadow: rgba(154, 48, 253, 0.35) 0px 5px 15px;
+}
+
+.join__meeing button {
+  width: 10vw;
+}
+
+.create__meeting {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.create__meeting button {
+  width: 18vw;
+}
+
+.footer {
+  text-align: center;
+  padding: 10px;
+  margin: 5px;
+  background-color: white;
+  font-family: "Nunito", sans-serif;
+  font-size: 24px;
+  letter-spacing: 2px;
+  border-radius: 5px;
+}
+
+@media only screen and (max-width: 600px) {
+  .by {
+    font-size: smaller;
+  }
+
+  .home__heading h3 {
+    margin: 10px;
+    font-size: larger !important;
+  }
+
+  .home__heading img {
+    height: 40px;
+  }
+
+  .join__meeing button {
+    width: 250px;
+  }
+
+  .create__meeting button {
+    width: 300px;
+  }
+}
