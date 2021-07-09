@@ -1,0 +1,8 @@
+.whiteboard-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  width: 70vw;
+  flex-wrap: wrap;
+}

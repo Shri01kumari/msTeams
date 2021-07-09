@@ -1,46 +1,131 @@
+:root {
+  --main-padding: 8px;
+}
+
 body {
- /* background-color: rgb(185, 117, 248); */
- background-color: #6264A7;
+  background-color: #6264a7;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   overflow-x: hidden;
 }
 
-.home {
-  min-height: 90vh;
-  background-color: white;
-  border-radius: 5px;
-  margin: 5px;
+/* Grid created */
+.parent-container {
   display: grid;
-  align-items: center;
+  grid-template-columns: 5.5% 1fr;
+  grid-template-rows: 10% 1fr 10%;
+  grid-column-gap: 10px;
+  grid-row-gap: 0px;
+  grid-template-areas:
+    "side header"
+    "side main"
+    "side foot";
+  padding: var(--main-padding);
+  height: calc(100vh - var(--main-padding));
 }
 
 .home__heading {
+  grid-area: header;
   padding: 10px;
-  background-color: white;
+  background-color: #fff;
   display: flex;
   flex-direction: row-reverse;
-  justify-content: space-between;
   align-items: center;
-  margin: 5px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  justify-content: center;
+}
+
+/* Side section styling */
+.side-header {
+  grid-area: side;
+  background-color: #34354b;
   border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
+.side-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  height: calc(100% - var(--main-padding) - 70px);
+}
+
+.side-section a {
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.side-section a:hover {
+  text-decoration: none !important;
+  outline: none;
+}
+
+.material-icons-outlined {
+  font-size: 30px;
+}
+
+.icon-text {
+  text-align: center;
+}
+
+.border-style {
+  width: 100%;
+  border-radius: 5px;
+  padding: 10px;
+  /* position: absolute; */
+}
+
+.border-style:hover {
+  border-left: 4px solid #a2a4df;
+  background-color: #6264a7;
+  /* background-color: #a6a6ff; */
+  margin-left: -4px;
+}
+
+/* Side section styling end */
+
+.home {
+  grid-area: main;
+  background-color: #f3f2f1;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  /* width: fit-content; */
+}
+
+.footer {
+  grid-area: foot;
+  text-align: center;
+  padding: 10px;
+  background-color: #f3f2f1;
+  font-family: "Nunito", sans-serif;
+  font-size: 24px;
+  letter-spacing: 2px;
+  border-radius: 5px;
+  margin-top: 5px;
+}
+
 .home__heading__text {
   /* font-family: "Nunito", sans-serif; */
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 28px;
   letter-spacing: 2px;
   font-weight: 500;
-  /* box-shadow: rgba(155, 19, 143, 0.24) 0px 3px 8px; */
-  box-shadow: #abadf5 0px 3px 8px;
+  box-shadow: rgb(187, 188, 212) 0px 3px 8px;
   padding: 10px;
-  /* background-color: rgb(230, 204, 255); */
-  background-color:#898bc4;
+  background-color: #6264a7;
   border-radius: 16px;
   border-bottom-right-radius: 0;
+  color: #fff;
 }
 
 .home__heading__img {
@@ -48,8 +133,29 @@ body {
   cursor: pointer;
 }
 
+/* Tilt-image */
+/* .image-tilt img {
+  transition: all 0.3s cubic-bezier(.03, .98, .52, .99);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+img:hover {
+  cursor: default;
+  transform: scale(1.04);
+  transition: box-shadow 0.3s cubic-bezier(.03, .98, .52, .99);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  maxTilt: 15;
+  perspective: 1400;
+} */
+
+.image-home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .main__conatiner__home {
-  background-color: white;
+  background-color: #f3f2f1;
   padding: 5px;
   border-radius: 5px;
   margin: 5px !important;
@@ -57,12 +163,17 @@ body {
 
 .join__meeting__container {
   border-radius: 5px;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   padding: 10px;
   height: 90%;
   margin: 10px;
   display: grid;
   place-items: center;
+}
+
+.join__meeting__container:hover {
+  transition: box-shadow 0.2s ease 0s;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 .join__meeing {
@@ -113,17 +224,6 @@ body {
 
 .create__meeting button {
   width: 18vw;
-}
-
-.footer {
-  text-align: center;
-  padding: 10px;
-  margin: 5px;
-  background-color: white;
-  font-family: "Nunito", sans-serif;
-  font-size: 24px;
-  letter-spacing: 2px;
-  border-radius: 5px;
 }
 
 @media only screen and (max-width: 600px) {

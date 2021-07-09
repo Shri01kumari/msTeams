@@ -2,13 +2,13 @@ console.log("this is coming form script");
 
 const socket = io("/");
 const videoGrid = document.getElementById("video-grid");
- const username = prompt("Please enter your name", "");
- socket.emit('new-user', username);
+
+socket.emit("new-user", userName);
 const myPeer = new Peer(undefined);
 let myVideoStream;
 const myVideo = document.createElement("video");
 myVideo.muted = true;
-const peers = {};
+var peers = {};
 navigator.mediaDevices
   .getUserMedia({
     video: true,
@@ -24,16 +24,16 @@ navigator.mediaDevices
         addVideoStream(video, userVideoStream);
       });
     });
-    socket.on('chat-message',data =>{
+    socket.on("chat-message", (data) => {
       console.log(data.name);
-      $('.messages').append(`<b>${data.name}</b>:${data.message}`);
-    })
-    socket.on('user-joined', (username) => {
-      console.log("user-name: " + username);
-      $('.messages').append(`<div><b>${username}</b> joined the chat<br></div>`);
-    }) 
-
-
+      $(".messages").append(`<b>${data.name}</b>:${data.message}`);
+    });
+    socket.on("user-joined", (userName) => {
+      console.log("user-name: " + userName);
+      $(".messages").append(
+        `<div><b>${userName}</b> joined the chat<br></div>`
+      );
+    });
 
     socket.on("user-connected", (userId) => {
       connectToNewUser(userId, stream);
@@ -74,9 +74,21 @@ myPeer.on("open", (id) => {
   socket.emit("join-room", ROOM_ID, id);
 });
 
-function connectToNewUser(userId, stream) {
-  const call = myPeer.call(userId, stream);
-  const video = document.createElement("video");
+// function connectToNewUser(userId, stream) {
+//   var call = myPeer.call(userId, stream);
+//   var video = document.createElement("video");
+//   call.on("stream", (userVideoStream) => {
+//     addVideoStream(video, userVideoStream);
+//   });
+//   call.on("close", () => {
+//     video.remove();
+//   });
+
+//   peers[userId] = call;
+// }
+const connectToNewUser = (userId, stream) => {
+  var call = myPeer.call(userId, stream);
+  var video = document.createElement("video");
   call.on("stream", (userVideoStream) => {
     addVideoStream(video, userVideoStream);
   });
@@ -85,7 +97,7 @@ function connectToNewUser(userId, stream) {
   });
 
   peers[userId] = call;
-}
+};
 
 function addVideoStream(video, stream) {
   video.srcObject = stream;
@@ -154,6 +166,72 @@ const setPlayVideo = () => {
   `;
   document.querySelector(".main__video_button").innerHTML = html;
 };
+
+//screen share
+
+// function shareScreen(){
+//   navigator.mediaDevices.getDisplayMedia({cursor:true})
+//   .then(screenStream=>{
+//     myPeer.current.replaceTrack(stream.getVideoTracks()[0],screenStream.getVideoTracks()[0],stream)
+//     userVideo.current.srcObject=screenStream
+//     screenStream.getTracks()[0].onended = () =>{
+//     myPeer.current.replaceTrack(screenStream.getVideoTracks()[0],stream.getVideoTracks()[0],stream)
+//     userVideo.current.srcObject=stream
+//     }
+//   })
+// }
+// let screenShare=<span className="iconContainer" onClick={()=>shareScreen()}>
+//     <img src={share} alt="Share screen"/>
+//   </span>
+// if(isMobileDevice()){
+//   screenShare=<></>
+// }
+// let fullscreenButton;
+// if(isfullscreen){
+//   fullscreenButton=<span className="iconContainer" onClick={()=>{setFullscreen(false)}}>
+//     <img src={minimize} alt="fullscreen"/>
+//   </span>
+// } else {
+//   fullscreenButton=<span className="iconContainer" onClick={()=>{setFullscreen(true)}}>
+//     <img src={fullscreen} alt="fullscreen"/>
+//   </span>
+// }
+// return (
+//   <>
+//     <div style={{display: renderLanding()}}>
+//       {landingHTML}
+//       <Rodal
+//         visible={modalVisible}
+//         onClose={()=>setModalVisible(false)}
+//         width={20}
+//         height={5}
+//         measure={'em'}
+//         closeOnEsc={true}
+//       >
+//         <div>{modalMessage}</div>
+//       </Rodal>
+//       {incomingCall}
+//     </div>
+//     <div className="callContainer" style={{display: renderCall()}}>
+//       <Suspense fallback={<div>Loading...</div>}>
+//         <Watermark/>
+//       </Suspense>
+//       <div className="partnerVideoContainer">
+//         {PartnerVideo}
+//       </div>
+//       <div className="userVideoContainer">
+//         {UserVideo}
+//       </div>
+//       <div className="controlsContainer flex">
+//         {audioControl}
+//         {videoControl}
+//         {screenShare}
+//         {fullscreenButton}
+//         {hangUp}
+//       </div>
+//     </div>
+//   </>
+// )
 
 /* globals MediaRecorder */
 
@@ -287,8 +365,8 @@ async function init(constraints) {
   }
 }
 
-document.querySelector("button#start").addEventListener("click", async () => {
-  document.querySelector("button#start").disabled = true;
+document.querySelector("button#record").addEventListener("click", async () => {
+  document.querySelector("button#record").disabled = true;
   const hasEchoCancellation =
     document.querySelector("#echoCancellation").checked;
   const constraints = {
@@ -303,5 +381,3 @@ document.querySelector("button#start").addEventListener("click", async () => {
   console.log("Using media constraints:", constraints);
   await init(constraints);
 });
-
-

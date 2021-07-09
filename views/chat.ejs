@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons8-microsoft-teams-2019-16.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+    </script>
+    <link rel="stylesheet" href="/css/home.css" />
+    <link rel="stylesheet" href="/css/chat.css">
+    <!-- <link rel="manifest" href="manifest.json"> -->
+
+    <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-database.js"></script>
+
+    <script>
+        var firebaseConfig = {
+            apiKey: "AIzaSyDUiVf_n-tfcz6LJXGS1vV4zbbca0iDVRk",
+            authDomain: "chatapp-82e4c.firebaseapp.com",
+            databaseURL: "https://chatapp-82e4c-default-rtdb.firebaseio.com",
+            projectId: "chatapp-82e4c",
+            storageBucket: "chatapp-82e4c.appspot.com",
+            messagingSenderId: "966928662022",
+            appId: "1:966928662022:web:f8332f0e04918c14de8d87"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
+</head>
+
+<body>
+    <div class="parent-container">
+        <%- include('header.ejs') %>
+        <div class="home" style="background-color: transparent;">
+            <div id="wrapper">
+                <div id="menu">
+                    <p class="welcome">Welcome, Chat App <b></b></p>
+                    <!-- <Button type="submit" class="login" onclick="google_login()">GOOGLE LOG IN</Button>
+                    <Button type="submit" class="login" onclick="facebook_login()">FACEBOOK LOG IN</Button> -->
+                    <div style="clear:both"></div>
+                </div>
+
+                <div id="chatbox">
+                    <ul id="messages">
+
+                    </ul>
+                </div>
+                <!--
+                <form onsubmit="return sendMessage();">
+                    <input name="usermsg" type="text" id="usermsg" size="63" placeholder="Text Message" />
+                    <button id="button" class="button">Send</button>
+                </form> -->
+
+
+                <form onsubmit="return sendMessage();">
+                    <input type="text" id="message" class="usermsg" size="63" placeholder="Text Message"
+                        autocomplete="off" />
+                    <input type="submit" class="button">
+                </form>
+                <!-- <ul id="messages"></ul> -->
+            </div>
+        </div>
+        <footer class="footer">
+            Made with <span style="color: red">&#x2764;</span> by Shrishti
+        </footer>
+    </div>
+
+</body>
+<script>
+    // listen for incoming messages
+    firebase.database().ref("messages").on("child_added", function (snapshot) {
+        var html = "";
+        // give each message a unique ID
+        html += "<li id='message-" + snapshot.key + "'>";
+        // show delete button if message is sent by me
+        if (snapshot.val().sender == myName) {
+            html += "<button data-id='" + snapshot.key + "' onclick='deleteMessage(this);'>";
+            html += "Delete";
+            html += "</button>";
+        }
+        html += "{ " + snapshot.val().sender + " } : " + snapshot.val().message;
+        html += "</li>";
+
+        document.getElementById("messages").innerHTML += html;
+    });
+
+    function deleteMessage(self) {
+        // get message ID
+        var messageId = self.getAttribute("data-id");
+
+        // delete message
+        firebase.database().ref("messages").child(messageId).remove();
+    }
+
+    // attach listener for delete message
+    firebase.database().ref("messages").on("child_removed", function (snapshot) {
+        // remove message node
+        document.getElementById("message-" + snapshot.key).innerHTML = "This message has been removed";
+    });
+</script>
+
+
+</div>
+
+</body>
+<script src="/js/chat.js"></script>
+
+</html>

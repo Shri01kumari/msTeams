@@ -1,239 +1,450 @@
 .main {
-    height: 100vh;
-    display: flex;
+  height: 100vh;
+  display: flex;
 }
 
 #video-grid {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 video {
-    height: 300px;
-    width: 400px;
-    object-fit: cover;
-    padding: 8px;
+  object-fit: cover;
+  padding: 8px;
+  flex: 1;
+  vertical-align: top;
+  --width: 35vw;
+  width: var(--width);
+  height: calc(var(--width) * 0.5625);
+  /* border:5px solid #6264A7;
+    border-radius:10px;
+    padding:0;
+    margin:3px; */
 }
 
 .main__left {
-    flex: 0.8;
-    display: flex;
-    flex-direction: column;
+  flex: 0.8;
+  display: flex;
+  flex-direction: column;
 }
 
 .main__right {
-    flex: 0.2
+  flex: 0.2;
 }
 
 .main__videos {
-    flex-grow: 1;
-    background-color: #F5F5F5;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 40px;
+  flex-grow: 1;
+  background-color: #f5f5f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  overflow: hidden;
 }
 
 .main__controls {
-    background-color: #6264A7;
+  background-color: #6264a7;
 }
 
 .main__right {
-    background-color: #6264A7;
-    border-left: 1px solid #6264A7;
+  background-color: #6264a7;
+  border-left: 1px solid #6264a7;
 }
 
 .main__controls {
-    color: #F5F5F5;
-    display: flex;
-    justify-content: space-between;
-    padding: 5px;
+  color: #f5f5f5;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
 }
 
 .main__controls__block {
-    display: flex;
+  display: flex;
 }
 
 .main__controls__button {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 8px 10px;
-    min-width: 80px;
-    cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 10px;
+  min-width: 80px;
+  cursor: pointer;
+}
+
+.main__controls__block_gamma {
+  display: flex;
+  width: 80%;
+  justify-content: center;
+  align-items: center;
+  padding-left: 200px;
 }
 
 .main__controls__button:hover {
-    background-color: #6264A7;
-    border-radius: 5px;
+  background-color: #6264a7;
+  border-radius: 5px;
 }
 
 .main__controls__button i {
-    font-size: 24px;
+  font-size: 24px;
 }
 
 .main__right {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .main__header {
-    padding-top: 5px;
-    color: #F5F5F5;
-    text-align: center;
+  padding-top: 5px;
+  color: #f5f5f5;
+  text-align: center;
 }
 
 .main__chat_window {
-    flex-grow: 1;
-    overflow-y: auto;
+  flex-grow: 1;
+  overflow-y: auto;
 }
 
 .messages {
-    color: #F5F5F5;
-    list-style: none;
+  color: #f5f5f5;
+  list-style: none;
 }
 
 .main__message_container {
-    /* padding: 22px 12px; */
-    display: flex;
-    height: 76px;
-    /* border: 2px solid black; */
+  /* padding: 22px 12px; */
+  display: flex;
+  height: 76px;
+  /* border: 2px solid black; */
 }
 
 .main__message_container input {
-    flex-grow: 1;
-    /* background-color: transparent; */
-    border: none;
-    color: #46474e;
-    padding: 8px;
-    word-break: break-all;
-    word-wrap: break-word;
+  flex-grow: 1;
+  /* background-color: transparent; */
+  border: none;
+  color: #46474e;
+  padding: 8px;
+  word-break: break-all;
+  word-wrap: break-word;
 }
 
 .main__message_container input:focus {
-    outline: #46474e;
-    outline-style: solid;
-    outline-width: 3px;
-    /* border: 3px solid #46474e; */
+  outline: #46474e;
+  outline-style: solid;
+  outline-width: 3px;
+  /* border: 3px solid #46474e; */
 }
 
 .leave_meeting {
-    color: #F5F5F5;
-    font-size: 24px;
-    border-radius: 10px;
-    background: #d6655f;
-    padding: 5px;
-    text-align: center;
-    text-decoration: none;
+  color: #f5f5f5;
+  font-size: 24px;
+  border-radius: 10px;
+  background: #e72f25;
+  padding: 5px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
 }
 
-
 .leave_meeting:hover {
-    text-decoration: none;
-    color: #F5F5F5;
-    background-color: #f02116;
+  text-decoration: none;
+  color: #f5f5f5;
+  background-color: #b10b02;
+  box-shadow: rgba(241, 17, 17, 0.35) 0px 5px 15px;
 }
 
 .unmute,
 .stop {
-    color: #CC3B33;
+  color: #cc3b33;
 }
 
 button {
-    margin: 0 3px 10px 0;
-    padding-left: 2px;
-    padding-right: 2px;
-    width: 99px;
+  margin: 0 3px 10px 0;
+  padding-left: 2px;
+  padding-right: 2px;
+  width: 99px;
 }
 
 button:last-of-type {
-    margin: 0;
+  margin: 0;
 }
 
 p.borderBelow {
-    margin: 0 0 20px 0;
-    padding: 0 0 20px 0;
+  margin: 0 0 20px 0;
+  padding: 0 0 20px 0;
 }
 
-video {
-    vertical-align: top;
-    --width: 25vw;
-    width: var(--width);
-    height: calc(var(--width) * 0.5625);
-}
+/* added */
+/* video {
+  vertical-align: top;
+  --width: 25vw;
+  width: var(--width);
+  height: calc(var(--width) * 0.5625);
+} */
 
 video:last-of-type {
-    margin: 0 0 20px 0;
+  margin: 0 0 20px 0;
 }
 
 video#gumVideo {
-    margin: 0 20px 20px 0;
+  margin: 0 20px 20px 0;
 }
 
 div.progress,
 div#bitrate {
-    margin: 0 0 1em 0;
+  margin: 0 0 1em 0;
 }
 
 div.progress div.label {
-    display: inline-block;
-    font-weight: 400;
-    width: 8.2em;
+  display: inline-block;
+  font-weight: 400;
+  width: 8.2em;
 }
 
 form {
-    margin: 0 0 1em 0;
-    white-space: nowrap;
+  margin: 0 0 1em 0;
+  white-space: nowrap;
 }
 
 progress {
-    width: calc(100% - 8.5em);
+  width: calc(100% - 8.5em);
 }
 
 /* dropup-alpha menu */
 .dropbtn {
-    background-color: #3498DB;
-    color: white;
-    padding: 16px;
-    font-size: 16px;
-    border: none;
-    outline: none;
+  background-color: #3498db;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  outline: none;
+  /* added */
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
 }
 
-.dropup-alpha {
-    position: relative;
-    display: inline-block;
+/* added */
+.dropbtn:focus {
+  outline: none;
 }
+
+/* .dropup-alpha {
+  position: relative;
+  display: inline-block;
+} */
 
 .dropup-alpha-content {
-    display: none;
-    position: absolute;
-    bottom: 50px;
-    background-color: #F5F5F5;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    z-index: 1;
+  display: none;
+  position: absolute;
+  bottom: 50px;
+  background-color: #f5f5f5;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 5;
+  margin-left: 158px;
+  margin-bottom: 26px;
+  border-radius: 5px;
 }
 
 .dropup-alpha-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
 }
 
-.dropup-alpha-content a:hover {
-    background-color: #ccc
+.dropup-alpha-content li {
+  list-style: none;
+  color: black;
+  padding: 12px 8px;
+  text-align: center;
+  display: block;
+  transition: all 0.3s ease-in-out;
+}
+
+.dropup-alpha-content li:hover {
+  background-color: #ccc;
+  border-radius: 5px;
 }
 
 .show-content {
-    display: block;
+  display: block;
 }
 
-.dropup-alpha:hover .dropbtn {
-    background-color: #2980B9;
+
+.dropup-alpha-content ul {
+  list-style-type: none;
+  padding: 0;
+  margin-bottom: 0;
+}
+
+.icons-align {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.text-record {
+  color: #000;
+  padding: 12px 16px;
+}
+
+/* end menu dropup */
+
+
+/* The Modal (background) */
+.modal {
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Sit on top */
+  padding: 50px 0;
+  /* Location of the box */
+  left: 0;
+  top: 0;
+  /* margin-bottom: 10px !important; */
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0);
+  /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  font-family: "Nunito", sans-serif;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#container {
+  margin: 5px auto;
+}
+
+.modal__header {
+  width: fit-content;
+  margin: 4px auto;
+  letter-spacing: 3px;
+  font-size: 24px;
+  border-bottom: 1px solid gray;
+}
+
+.btn__container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.start__btn {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  /* background-color: rgb(15, 160, 15); */
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  transition: all 0.3s ease-in-out;
+  padding: 6px;
+  color: rgb(15, 160, 15);
+}
+
+.start__btn :focus {
+  outline: none;
+}
+
+.start__btn:hover {
+  box-shadow: rgb(169, 250, 169) 0px 3px 8px;
+}
+
+.record__btn {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  /* background-color: rgb(236, 240, 16); */
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  transition: all 0.3s ease-in-out;
+  padding: 6px;
+  color: rgb(251, 255, 0);
+}
+
+.record__btn :focus {
+  outline: none;
+}
+
+.record__btn:hover {
+  box-shadow: rgb(253, 255, 155) 0px 3px 8px;
+}
+
+.play__btn {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  /* background-color: rgb(9, 32, 158); */
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  transition: all 0.3s ease-in-out;
+  padding: 6px;
+  color: rgb(9, 32, 158);
+}
+
+.play__btn:focus {
+  outline: none;
+}
+
+.play__btn:hover {
+  box-shadow: rgb(163, 177, 255) 0px 3px 8px;
+}
+
+.download__btn {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  /* background-color: rgb(189, 22, 22); */
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  transition: all 0.3s ease-in-out;
+  padding: 6px;
+  color: rgb(189, 22, 22);
+}
+
+.download__btn:focus {
+  outline: none;
+}
+
+.download__btn:hover {
+  box-shadow: rgb(250, 173, 173) 0px 3px 8px;
+}
+
+.errorMsg {
+  /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
+  color: #ee3d34;
+  padding: 10px;
+  width: fit-content;
+  margin: 2px auto;
+  border-radius: 4px;
+  transition: all 0.4s ease-in-out;
 }
 
 /* end */

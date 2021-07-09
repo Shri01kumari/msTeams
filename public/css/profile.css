@@ -1,0 +1,205 @@
+.home {
+    /* background-image: url("/assets/re-bg.png"); */
+    /* background-image: url('https://picsum.photos/seed/picsum/1000/520'); */
+    /* background-image: url("https://wallpaperaccess.com/full/809177.jpg"); */
+    /* background-color: #c797eb; */
+}
+
+.profile {
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    /* backdrop-filter: blur(15px); */
+}
+
+/* .profile:before {
+    content: '';
+    display: block;
+    background: #d1b4d1;
+
+
+    background-size: cover;
+    -webkit-filter: blur(5px);
+    -moz-filter: blur(5px);
+    -o-filter: blur(5px);
+    -ms-filter: blur(5px);
+    filter: blur(26px);
+    width: 92%;
+    height: 75%;
+    position: absolute;
+} */
+
+.profile-banner {
+    height: 50%;
+    width: 100%;
+    background-image: url("https://picsum.photos/seed/picsum/1000/520");
+    /* background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfMWLVTH9DnTssMwThAfE9JmVCBkrYMy_BRA&usqp=CAU'); */
+    background-size: 100%;
+    border-radius: 10px;
+    z-index: 10;
+}
+
+.profile-picture {
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    position: relative;
+    top: -90px;
+    text-align: center;
+    border: 5px solid #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 15;
+}
+
+.profile-picture img {
+    border-radius: 50%;
+    height: 100%;
+    width: 100%;
+    z-index: 15;
+}
+
+.profile-details {
+    font-size: 20pt;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    top: -15%;
+    z-index: 15;
+    color: #fff;
+}
+
+.id-details {
+    font-size: 13pt;
+    color: #d6d0d0;
+    z-index: 15;
+}
+
+/* Button design */
+button {
+    padding: 20px;
+}
+
+/* a {
+    color: transparent;
+}
+
+a:hover {
+    color: transparent;
+    text-decoration: none;
+    outline: none;
+} */
+
+.custom-btn-alpha {
+    width: 130px;
+    height: 40px;
+    color: #fff;
+    border-radius: 5px;
+    padding: 10px 25px;
+    font-family: "Lato", sans-serif;
+    font-weight: 500;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+    box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
+        7px 7px 20px 0px rgba(0, 0, 0, 0.1), 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
+    outline: none;
+}
+
+.btn-8-alpha {
+    background-color: #f0ecfc;
+    background-image: linear-gradient(315deg, #f0ecfc 0%, #c797eb 74%);
+    line-height: 42px;
+    padding: 0;
+    border: none;
+    position: relative;
+    top: -7%;
+}
+
+.btn-8-alpha span {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.btn-8-alpha:before,
+.btn-8-alpha:after {
+    position: absolute;
+    content: "";
+    right: 0;
+    bottom: 0;
+    background: #c797eb;
+    /*box-shadow:  4px 4px 6px 0 rgba(255,255,255,.5),
+              -4px -4px 6px 0 rgba(116, 125, 136, .2),
+    inset -4px -4px 6px 0 rgba(255,255,255,.5),
+    inset 4px 4px 6px 0 rgba(116, 125, 136, .3);*/
+    transition: all 0.3s ease;
+}
+
+.btn-8-alpha:before {
+    height: 0%;
+    width: 2px;
+}
+
+.btn-8-alpha:after {
+    width: 0%;
+    height: 2px;
+}
+
+.btn-8-alpha:hover:before {
+    height: 100%;
+}
+
+.btn-8-alpha:hover:after {
+    width: 100%;
+}
+
+.btn-8-alpha:hover {
+    background: #fff;
+}
+
+.btn-8-alpha span:hover {
+    color: #b672eb;
+}
+
+.btn-8-alpha span:before,
+.btn-8-alpha span:after {
+    position: absolute;
+    content: "";
+    left: 0;
+    top: 0;
+    background: #c797eb;
+    /*box-shadow:  4px 4px 6px 0 rgba(255,255,255,.5),
+              -4px -4px 6px 0 rgba(116, 125, 136, .2),
+    inset -4px -4px 6px 0 rgba(255,255,255,.5),
+    inset 4px 4px 6px 0 rgba(116, 125, 136, .3);*/
+    transition: all 0.3s ease;
+}
+
+.btn-8-alpha span:before {
+    width: 2px;
+    height: 0%;
+}
+
+.btn-8-alpha span:after {
+    height: 2px;
+    width: 0%;
+}
+
+.btn-8-alpha span:hover:before {
+    height: 100%;
+}
+
+.btn-8-alpha span:hover:after {
+    width: 100%;
+}
