@@ -52,6 +52,16 @@ video {
   border-left: 1px solid #6264a7;
 }
 
+.messages {
+  overflow-wrap: anywhere;
+  /* padding: 0; */
+  padding: 2%;
+}
+
+.main__message_container>input {
+  overflow-wrap: anywhere;
+}
+
 .main__controls {
   color: #f5f5f5;
   display: flex;
@@ -61,6 +71,7 @@ video {
 
 .main__controls__block {
   display: flex;
+  width: 100%;
 }
 
 .main__controls__button {
@@ -73,9 +84,22 @@ video {
   cursor: pointer;
 }
 
+.main__controls__button>a {
+  color: #fff;
+}
+
+span {
+  padding-top: 4px;
+}
+
+.main__controls__button>a:hover {
+  outline: none;
+  text-decoration: none;
+}
+
 .main__controls__block_gamma {
   display: flex;
-  width: 80%;
+  width: 74%;
   justify-content: center;
   align-items: center;
   padding-left: 200px;
@@ -86,9 +110,12 @@ video {
   border-radius: 5px;
 }
 
+/* //change */
 .main__controls__button i {
-  font-size: 24px;
+  font-size: 20px;
 }
+
+.main__controls__block__end {}
 
 .main__right {
   display: flex;
@@ -137,13 +164,15 @@ video {
 
 .leave_meeting {
   color: #f5f5f5;
-  font-size: 24px;
+  font-size: 20px;
   border-radius: 10px;
   background: #e72f25;
   padding: 5px;
   text-align: center;
   text-decoration: none;
   transition: all 0.3s ease-in-out;
+  width: 12vw;
+  height: 6vh;
 }
 
 .leave_meeting:hover {
@@ -158,16 +187,6 @@ video {
   color: #cc3b33;
 }
 
-button {
-  margin: 0 3px 10px 0;
-  padding-left: 2px;
-  padding-right: 2px;
-  width: 99px;
-}
-
-button:last-of-type {
-  margin: 0;
-}
 
 p.borderBelow {
   margin: 0 0 20px 0;
@@ -212,26 +231,19 @@ progress {
 
 /* dropup-alpha menu */
 .dropbtn {
-  background-color: #3498db;
+  background-color: transparent;
   color: white;
   padding: 16px;
   font-size: 16px;
   border: none;
   outline: none;
-  /* added */
   border-radius: 5px;
   transition: all 0.3s ease-in-out;
 }
 
-/* added */
 .dropbtn:focus {
   outline: none;
 }
-
-/* .dropup-alpha {
-  position: relative;
-  display: inline-block;
-} */
 
 .dropup-alpha-content {
   display: none;
@@ -319,7 +331,7 @@ progress {
 
 /* Modal Content */
 .modal-content {
-  font-family: "Nunito", sans-serif;
+  font-family: "Roboto", sans-serif;
   background-color: #fefefe;
   margin: auto;
   padding: 20px;
@@ -328,15 +340,18 @@ progress {
 }
 
 /* The Close Button */
-.close {
-  color: #aaaaaa;
-  float: right;
+.close-menu {
+  color: #3c3a3a;
+  /* float: right; */
   font-size: 28px;
   font-weight: bold;
+  /* left: 12%; */
+  display: flex;
+  justify-content: flex-end;
 }
 
-.close:hover,
-.close:focus {
+.close-menu:hover,
+.close-menu:focus {
   color: #000;
   text-decoration: none;
   cursor: pointer;
@@ -361,81 +376,32 @@ progress {
   align-items: center;
 }
 
-.start__btn {
+.btn__container button {
+  margin: 0 3px 10px 0;
+  padding-left: 2px;
+  padding-right: 2px;
+  width: 125px;
+  height: 50px;
+  background-color: #6264a7;
+  color: #fff;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  /* background-color: rgb(15, 160, 15); */
   border-radius: 5px;
   border: none;
   outline: none;
   transition: all 0.3s ease-in-out;
   padding: 6px;
-  color: rgb(15, 160, 15);
+  font-weight: 500;
 }
 
-.start__btn :focus {
+.btn__container button:focus {
   outline: none;
 }
 
-.start__btn:hover {
-  box-shadow: rgb(169, 250, 169) 0px 3px 8px;
+.btn__container button:hover {
+  box-shadow: rgb(229, 231, 241) 0px 3px 8px;
+  /* cursor: pointer; */
 }
 
-.record__btn {
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  /* background-color: rgb(236, 240, 16); */
-  border-radius: 5px;
-  border: none;
-  outline: none;
-  transition: all 0.3s ease-in-out;
-  padding: 6px;
-  color: rgb(251, 255, 0);
-}
-
-.record__btn :focus {
-  outline: none;
-}
-
-.record__btn:hover {
-  box-shadow: rgb(253, 255, 155) 0px 3px 8px;
-}
-
-.play__btn {
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  /* background-color: rgb(9, 32, 158); */
-  border-radius: 5px;
-  border: none;
-  outline: none;
-  transition: all 0.3s ease-in-out;
-  padding: 6px;
-  color: rgb(9, 32, 158);
-}
-
-.play__btn:focus {
-  outline: none;
-}
-
-.play__btn:hover {
-  box-shadow: rgb(163, 177, 255) 0px 3px 8px;
-}
-
-.download__btn {
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  /* background-color: rgb(189, 22, 22); */
-  border-radius: 5px;
-  border: none;
-  outline: none;
-  transition: all 0.3s ease-in-out;
-  padding: 6px;
-  color: rgb(189, 22, 22);
-}
-
-.download__btn:focus {
-  outline: none;
-}
-
-.download__btn:hover {
-  box-shadow: rgb(250, 173, 173) 0px 3px 8px;
-}
 
 .errorMsg {
   /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
@@ -448,3 +414,113 @@ progress {
 }
 
 /* end */
+
+/* Dropup menu user */
+
+.box-user {
+  position: absolute;
+  display: none;
+  background-color: #6264a7;
+  box-shadow: 0px 8px 16px 0px rgb(0 0 0 / 20%);
+  z-index: 5;
+  border-radius: 5px;
+  top: 16%;
+  left: 3vw;
+  height: 30vh;
+  width: 23vw;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  color: #fff;
+}
+
+.dropup-user:hover {
+  cursor: pointer;
+}
+
+.close-menu-user {
+  color: rgb(199, 195, 195);
+  font-size: 28px;
+  font-weight: bold;
+  position: absolute;
+  top: 15%;
+  left: 24%;
+  z-index: +10;
+  display: none;
+}
+
+.close-menu-user:hover,
+.close-menu-user:focus {
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.add-participant-button {
+  margin: 0 3px 10px 0;
+  padding-left: 2px;
+  padding-right: 2px;
+  width: 125px;
+  height: 40px;
+  background-color: #fff;
+  color: #6264a7;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  transition: all 0.3s ease-in-out;
+  padding: 6px;
+  font-weight: 500;
+}
+
+.add-participant-button:focus {
+  outline: none;
+}
+
+.add-participant-button:hover {
+  box-shadow: rgb(163, 177, 255) 0px 3px 8px;
+  /* cursor: pointer; */
+}
+
+#mail-form>input {
+  background: #fff;
+  /* border: 2px solid #fff; */
+  border-radius: 5px;
+  border: none;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  height: 40px;
+  width: 200px;
+}
+
+#mail-form>input::placeholder {
+  color: #bdbaba;
+
+}
+
+#mail-form>input:focus {
+  background: #fff;
+  border: none;
+  box-shadow: rgb(163, 177, 255) 0px 3px 8px;
+  outline: none;
+}
+
+#mail-form>input:hover {
+  outline: 2px solid rgb(148, 145, 145);
+  outline-offset: 1px;
+}
+
+.input-content {
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+.text-align-content {
+  margin-bottom: 20px;
+  font-size: 18px;
+}
+
+.text-align-content .material-icons {
+  padding-left: 5px;
+  margin-top: 2px;
+  line-height: 2;
+}

@@ -67,6 +67,7 @@
               <div class="join__meeting__container">
                 <div class="join__meeing">
                   <div class="meeting-form">
+                    <p class="welcome">Welcome to Microsoft Teams 💬 </p>
                     <label class="input__label"
                       >Paste the meeting id here&#128073;
                     </label>
@@ -74,7 +75,7 @@
                       class="input"
                       id="meeting-number"
                       type="text"
-                      placeholder="Eg: 5788534d-88e2-4a31-aac9-523562f08011"
+                      value="https://teams-clone-appv3.herokuapp.com/"
                     />
                   </div>
                   <button
@@ -92,25 +93,6 @@
                         <i class="fa fa-plus ml-3 mr-0" aria-hidden="true"></i>
                       </button>
                     </a>
-
-                    <!-- Mailer -->
-                    <br />
-                    <button id="join_but">Add Participants</button>
-
-                    <div id="my_modal" style="display: none">
-                      <form>
-                        <input
-                          type="email"
-                          placeholder="Enter the reciever email address"
-                          id="receiveremail"
-                        />
-
-                        <button id="cancel_but" type="button">Cancel</button>
-                        <button type="submit" id="submit">Add</button>
-                      </form>
-                    </div>
-
-                    <!-- Mailer ends -->
                   </div>
                 </div>
               </div>
@@ -122,40 +104,10 @@
         Made with <span style="color: red">&#x2764;</span> by Shrishti
       </footer>
     </div>
-    <script>
-      $('form').on('submit', (e) => {
-        e.preventDefault();
 
-        const receiveremail = $('#receiveremail').val().trim();
-
-        const data = {
-          receiveremail,
-        };
-
-        $.post("/send", data, function () {
-          console.log("server recieved our data");
-        });
-      });
-    </script>
-    <script type="text/javascript">
-      var joinBut = document.getElementById("join_but");
-      var cancelBut = document.getElementById("cancel_but");
-      window.onload=function(){
-
-        joinBut.addEventListener("click", function () {
-        var modal = document.getElementById("my_modal");
-        modal.style.display = "block";
-      });
-
-      cancelBut.addEventListener("click", function () {
-        var modal = document.getElementById("my_modal");
-        modal.style.display = "none";
-      });
-    }
-     
-    </script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
   </body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
   <script src="/js/home.js"></script>
   <script src="/js/mailer.js"></script>
 </html>

@@ -8,12 +8,12 @@ const { ExpressPeerServer } = require("peer");
 const peerServer = ExpressPeerServer(server, {
   debug: true,
 });
+
 const nodemailer = require("nodemailer");
 const { v4: uuidV4 } = require("uuid");
 require("dotenv").config();
-var smtpTransport = require("nodemailer-smtp-transport");
-
-
+// var smtpTransport = require("nodemailer-smtp-transport");
+// const sendMail = require("./mailDONTUSE");
 const users = {};
 
 //view engine setup
@@ -37,8 +37,14 @@ app.use(
     idpLogout: true,
   })
 );
+const meetId = uuidV4();
+// exports.meetId == meetId;
+
 app.get("/", requiresAuth(), (req, res) => {
-  res.render("home");
+  // res.render("home");
+  res.render("home", {
+    meetId: meetId,
+  });
 });
 
 //used data from auth0 authentication to render profile page
@@ -58,8 +64,6 @@ app.get("/meet", (req, res) => {
   res.redirect(`/${uuidV4()}`);
 });
 
-
-
 app.get("/calendar", (req, res) => {
   res.render("calendar");
 });
@@ -76,12 +80,10 @@ app.get("/:room", (req, res) => {
   res.render("room", {
     roomId: req.params.room,
     username: req.oidc.user.name,
+    useremail: req.oidc.user.email,
     email_verified: req.oidc.user.email_verified,
   });
 });
-app.get("/add",(req,res)=>{
-  res.render("addParticipants");
-})
 
 //setting up events to listen to
 io.on("connection", (socket) => {
@@ -90,7 +92,7 @@ io.on("connection", (socket) => {
     users[socket.id] = username;
     socket.broadcast.emit("user-joined", username);
   });
-    socket.on("join-room", (roomId, userId) => {
+  socket.on("join-room", (roomId, userId) => {
     socket.join(roomId);
     socket.broadcast.to(roomId).emit("user-connected", userId);
   });
@@ -110,81 +112,62 @@ io.on("connection", (socket) => {
   });
 });
 
+// Mail sending route and relevant code
+app.use(
+  express.urlencoded({
+    extend: false,
+  })
+);
+app.use(express.json());
+
 app.post("/send", function (req, res) {
-  //console.log(req.body.receiveremail);
+  let transporter = nodemailer.createTransport({
+    host: "smtp.gmail.com",
+    port: 465,
+    secure: true,
+    auth: {
+      user: "msteams.outlook.111@gmail.com",
+      pass: "Microsoft11@teams",
+    },
+  });
 
-  var mailOpts, smtpTrans;
-
-  //Setup Nodemailer transport, I chose gmail. Create an application-specific password to avoid problems.
-  smtpTrans = nodemailer.createTransport(
-    smtpTransport({
-      service: "gmail",
-
-      auth: {
-        user: "msteams.outlook.111@gmail.com",
-        pass: "Microsoft11@teams",
-      },
-    })
-  );
   const output = `
   <p>You have a new meeting url</p>
-  <h3>Credentials for the new meeting</h3>
+  <h3>Credentials for the new meeting</h3>`;
 
-  <h3>Message</h3>
-
-`;
-  //Mail options
-  mailOpts = {
-    //from:req.body.senderemail,
+  let mailOptions = {
     from: "msteams.outlook.111@gmail.com",
-    to: "shrishtikumari51@gmail.com", // list of receivers
-    subject: "Meeting Credentials for the new meeting", //, // Subject line
-    html: output, // html body
+    to: req.body.receiveremail,
+    subject: "MS Teams invite",
+    html: output,
   };
 
-  // cron.schedule(" 01 * * * *", () => {
-  smtpTrans.sendMail(mailOpts, function (error, res) {
-    try {
-      console.log("Message sent successfully!");
-
-      // alert(
-      //   "Email sent successfully from default email address. Same email also has been sent to your registered email address for verification"
-      // );
-    } catch (error) {
-      return console.log(error);
+  transporter.sendMail(mailOptions, function (err, data) {
+    if (err) {
+      console.log("Error Occurs: ", err);
+    } else {
+      console.log("Email sent!!!");
     }
   });
-  //res.render("home", { msg: "Email has been sent successfully" });
 });
-// app.post("/send",function(req,res) {
-//   //using nodemailer to send invitation mails
-// //step1
-// let transporter=nodemailer.createTransport({
-//   host: 'smtp.gmail.com',
-//   port:465,
-//   secure:true,
-//   auth:{
-//       user:'msteams.outlook.111@gmail.com',
-//       pass:'Microsoft11@teams'
-//   }
+
+// Method-2
+//  ? log message error
+// app.post("/send", function (req, res) {
+//console.log(req.body.receiveremail);
+//res.render("home", { msg: "Email has been sent successfully" });
+//   const receiveremail = req.body.receiveremail;
+//   console.log("Data: ", req.body.receiveremail);
+
+//   sendMail(receiveremail, function (err, data) {
+//     debugger;
+//     if (err) {
+//       res.status(500).json({ message: "Internal Error" });
+//     } else {
+//       res.status({ message: "Email sent!!!" });
+//     }
+//   });
 // });
-// //step2
-// let mailOptions={
-//   from:'msteams.outlook.111@gmail.com',
-//   to:req.body.receiveremail,
-//   subject:'MS Teams invite',
-//   text:'You are invited to join a video meeting!!!Link for the meet:'
-// };
-// //step3
-// transporter.sendMail(mailOptions,function(err,data){
-//   if(err){
-//       console.log('Error Occurs: ',err);
-//   }else{
-//       console.log('Email sent!!!');
-//   }
-// });
-// });
-// Requires "request" to be installed (see https://www.npmjs.com/package/request)
 
 server.listen(process.env.PORT || 3000, () => {
   console.log("Server started at port 3000");

@@ -39,12 +39,12 @@ navigator.mediaDevices
       connectToNewUser(userId, stream);
     });
     // input value
-    let text = $("input");
+    let text = $("#chat_message");
     // when press enter send message
     $("html").keydown(function (e) {
       if (e.which == 13 && text.val().length !== 0) {
         $(".messages").append(
-          `<div class="messages_right"><b>Me:<t></b> ${text.val()}</div>`
+          `<div class="messages_right"><b>Me:<t></b> ${text.val()} <br></div>`
         );
         socket.emit("message", text.val());
         text.val("");
