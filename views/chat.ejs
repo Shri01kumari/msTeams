@@ -114,11 +114,11 @@
     });
 
     let userAuthenticated = "<%= authenticated %>";
-    let myname = "<%=user %>";
+    let myName = "<%=user %>";
     if (userAuthenticated) {
-      myname = myname;
+      myName = myName;
     } else {
-      myname = prompt("Please enter your name", "");
+      myName = prompt("Please enter your name", "");
     }
 
     const sendMessage = () => {
