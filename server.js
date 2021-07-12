@@ -133,8 +133,9 @@ app.post("/send", function (req, res) {
 
   const output = `
   <p>You have a new meeting url</p>
-  <h3>Credentials for the new meeting</h3>`;
-
+  <h3>Credentials for the new meeting:
+  https://teams-clone-appv3.herokuapp.com/</h3>`;
+//also add meeting id
   let mailOptions = {
     from: "msteams.outlook.111@gmail.com",
     to: req.body.receiveremail,
