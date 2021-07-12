@@ -37,14 +37,16 @@ body {
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   justify-content: right;
 }
-.welcome{
-  font-family:"Nunito", sans-serif;
-  font-size:24px;
-  font-weight:900;
-  letter-spacing:3px;
-  padding:5px;
-  border-bottom:1px solid black;
+
+.welcome {
+  font-family: "Nunito", sans-serif;
+  font-size: 24px;
+  font-weight: 900;
+  letter-spacing: 3px;
+  padding: 5px;
+  border-bottom: 1px solid black;
 }
+
 /* Side section styling */
 .side-header {
   grid-area: side;
@@ -86,14 +88,32 @@ body {
   width: 100%;
   border-radius: 5px;
   padding: 10px;
-  /* position: absolute; */
 }
 
 .border-style:hover {
   border-left: 4px solid #a2a4df;
   background-color: #6264a7;
-  /* background-color: #a6a6ff; */
   margin-left: -4px;
+}
+
+/* User image section customize */
+.profile-pic-user {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  text-align: center;
+  border: 3px solid #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.profile-pic-user img {
+  border-radius: 50%;
+  height: 100%;
+  width: 100%;
+  z-index: 10;
 }
 
 /* Side section styling end */
@@ -138,21 +158,6 @@ body {
   height: 70px;
   cursor: pointer;
 }
-
-/* Tilt-image */
-/* .image-tilt img {
-  transition: all 0.3s cubic-bezier(.03, .98, .52, .99);
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-}
-
-img:hover {
-  cursor: default;
-  transform: scale(1.04);
-  transition: box-shadow 0.3s cubic-bezier(.03, .98, .52, .99);
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  maxTilt: 15;
-  perspective: 1400;
-} */
 
 .image-home {
   display: flex;

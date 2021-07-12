@@ -140,7 +140,7 @@
                 <span>Stop Video</span>
               </div>
               <div class="main__controls__button">
-                <a href="https://teams-shrishti.netlify.app/" target="_blank">
+                <a href="/chat" target="_blank">
                   <i class="material-icons"> chat </i>
                   <br />
                   <span>Chat</span>
@@ -257,6 +257,7 @@
   </script>
 
   <script type="text/javascript">
+    const user = "<%= username %>";
     // Send mail data to backend
     $("form").on("submit", (e) => {
       // e.preventDefault();
@@ -264,26 +265,13 @@
 
       const data = {
         receiveremail,
+        ROOM_ID,
+        user,
       };
       $.post("/send", data, function () {
         console.log("server recieved our data");
       });
     });
-
-    // Display buttons on clicking add Participant
-    // var joinBut = document.getElementById("add-user");
-    // var cancelBut = document.getElementById("cancel_but");
-    // window.onload = function () {
-    //   joinBut.addEventListener("click", function () {
-    //     let participantData = document.getElementById("my_modal");
-    //     participantData.style.display = "block";
-    //   });
-
-    //   cancelBut.addEventListener("click", function () {
-    //     let closeModal = document.getElementById("my_modal");
-    //     closeModal.style.display = "none";
-    //   });
-    // };
   </script>
 
   <script src="/js/script.js" defer></script>

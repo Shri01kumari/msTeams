@@ -28,7 +28,7 @@ a:hover {
 #loginform {
     margin: 0 auto;
     padding-bottom: 25px;
-    background: #bcc0c0;
+    background: transparent;
     width: 514px;
     border: 6px solid #ebebeb;
     border-radius: 6px;
@@ -93,7 +93,7 @@ a:hover {
 .welcome {
     float: left;
     font-size: 18px;
-    color: teal;
+    color: #fff;
 }
 
 .login {
@@ -139,5 +139,3 @@ li {
 .messages {
     color: #fff !important;
 } */
-
-@media screen and (max-width: 518px) {}

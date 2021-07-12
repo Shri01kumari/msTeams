@@ -38,19 +38,18 @@ app.use(
   })
 );
 const meetId = uuidV4();
-// exports.meetId == meetId;
 
 app.get("/", requiresAuth(), (req, res) => {
-  // res.render("home");
   res.render("home", {
-    meetId: meetId,
+    picture: req.oidc.user.picture,
+    email_verified: req.oidc.user.email_verified,
   });
 });
 
 //used data from auth0 authentication to render profile page
 app.get("/profile", requiresAuth(), (req, res) => {
   res.render("profile", {
-    roomID: req.params.room,
+    roomId: req.params.room,
     username: req.oidc.user.name,
     nickname: req.oidc.user.nickname,
     picture: req.oidc.user.picture,
@@ -64,19 +63,29 @@ app.get("/meet", (req, res) => {
   res.redirect(`/${uuidV4()}`);
 });
 
-app.get("/calendar", (req, res) => {
-  res.render("calendar");
+app.get("/calendar", requiresAuth(), (req, res) => {
+  res.render("calendar", {
+    picture: req.oidc.user.picture,
+    email_verified: req.oidc.user.email_verified,
+  });
 });
 
-app.get("/chat", (req, res) => {
-  res.render("chat");
+app.get("/chat", requiresAuth(), (req, res) => {
+  res.render("chat", {
+    picture: req.oidc.user.picture,
+    email_verified: req.oidc.user.email_verified,
+    username: req.oidc.user.name,
+  });
 });
 
-app.get("/whiteboard", (req, res) => {
-  res.render("whiteboard");
+app.get("/whiteboard", requiresAuth(), (req, res) => {
+  res.render("whiteboard", {
+    picture: req.oidc.user.picture,
+    email_verified: req.oidc.user.email_verified,
+  });
 });
 
-app.get("/:room", (req, res) => {
+app.get("/:room", requiresAuth(), (req, res) => {
   res.render("room", {
     roomId: req.params.room,
     username: req.oidc.user.name,
@@ -84,6 +93,8 @@ app.get("/:room", (req, res) => {
     email_verified: req.oidc.user.email_verified,
   });
 });
+
+// console.log(meetId);
 
 //setting up events to listen to
 io.on("connection", (socket) => {
@@ -132,17 +143,20 @@ app.post("/send", function (req, res) {
   });
 
   const output = `
-  <p>You have a new meeting url</p>
-  <h3>Credentials for the new meeting:
-  https://teams-clone-appv3.herokuapp.com/</h3>`;
-//also add meeting id
+  <h2>You have been invited to a meeting by ${req.body.user}.</h2>
+  <p>Credentials for the meeting are:
+  <br>
+  Meeting URL: https://teams-clone-appv3.herokuapp.com/${req.body.ROOM_ID}
+  <br>
+  Meeting Id : ${req.body.ROOM_ID}
+  </p>`;
+
   let mailOptions = {
     from: "msteams.outlook.111@gmail.com",
     to: req.body.receiveremail,
-    subject: "MS Teams invite",
+    subject: `MS Teams invite by ${req.body.user}`,
     html: output,
   };
-
   transporter.sendMail(mailOptions, function (err, data) {
     if (err) {
       console.log("Error Occurs: ", err);

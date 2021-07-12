@@ -143,74 +143,7 @@ const setPlayVideo = () => {
   document.querySelector(".main__video_button").innerHTML = html;
 };
 
-//screen share
-
-// function shareScreen(){
-//   navigator.mediaDevices.getDisplayMedia({cursor:true})
-//   .then(screenStream=>{
-//     myPeer.current.replaceTrack(stream.getVideoTracks()[0],screenStream.getVideoTracks()[0],stream)
-//     userVideo.current.srcObject=screenStream
-//     screenStream.getTracks()[0].onended = () =>{
-//     myPeer.current.replaceTrack(screenStream.getVideoTracks()[0],stream.getVideoTracks()[0],stream)
-//     userVideo.current.srcObject=stream
-//     }
-//   })
-// }
-// let screenShare=<span className="iconContainer" onClick={()=>shareScreen()}>
-//     <img src={share} alt="Share screen"/>
-//   </span>
-// if(isMobileDevice()){
-//   screenShare=<></>
-// }
-// let fullscreenButton;
-// if(isfullscreen){
-//   fullscreenButton=<span className="iconContainer" onClick={()=>{setFullscreen(false)}}>
-//     <img src={minimize} alt="fullscreen"/>
-//   </span>
-// } else {
-//   fullscreenButton=<span className="iconContainer" onClick={()=>{setFullscreen(true)}}>
-//     <img src={fullscreen} alt="fullscreen"/>
-//   </span>
-// }
-// return (
-//   <>
-//     <div style={{display: renderLanding()}}>
-//       {landingHTML}
-//       <Rodal
-//         visible={modalVisible}
-//         onClose={()=>setModalVisible(false)}
-//         width={20}
-//         height={5}
-//         measure={'em'}
-//         closeOnEsc={true}
-//       >
-//         <div>{modalMessage}</div>
-//       </Rodal>
-//       {incomingCall}
-//     </div>
-//     <div className="callContainer" style={{display: renderCall()}}>
-//       <Suspense fallback={<div>Loading...</div>}>
-//         <Watermark/>
-//       </Suspense>
-//       <div className="partnerVideoContainer">
-//         {PartnerVideo}
-//       </div>
-//       <div className="userVideoContainer">
-//         {UserVideo}
-//       </div>
-//       <div className="controlsContainer flex">
-//         {audioControl}
-//         {videoControl}
-//         {screenShare}
-//         {fullscreenButton}
-//         {hangUp}
-//       </div>
-//     </div>
-//   </>
-// )
-
-/* globals MediaRecorder */
-
+// Global media recorder
 let mediaRecorder;
 let recordedBlobs;
 

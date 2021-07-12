@@ -15,7 +15,14 @@
   <div class="side-section">
     <div class="profile-home border-style">
       <a href="/profile">
-        <i class="change-fill material-icons-outlined">account_circle</i>
+        <div class="profile-pic-user">
+          <img src="<%=picture%>" />
+        </div>
+        <i
+          id="user-account-header"
+          class="change-fill material-icons-outlined user-account-header"
+          >account_circle</i
+        >
         <div class="icon-text">Profile</div>
       </a>
     </div>
@@ -28,9 +35,10 @@
     </div>
 
     <div class="chat-home border-style">
-      <a href="https://teams-shrishti.netlify.app/">
+      <a href="/chat">
         <i class="change-fill material-icons-outlined"> chat </i>
         <div class="icon-text">
+          Chat
           <!-- changes done -->
         </div>
       </a>
@@ -46,3 +54,13 @@
   <!-- New section side end -->
 </div>
 <!-- Side section end -->
+
+<% const authenticated = email_verified %>
+<script>
+  let authenticating = "<%= authenticated %>";
+  if (authenticating) {
+    document.getElementById("user-account-header").style.display = "none";
+  } else {
+    document.getElementById("user-account-header").style.display = "block";
+  }
+</script>

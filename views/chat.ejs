@@ -79,7 +79,7 @@
             Made with <span style="color: red">&#x2764;</span> by Shrishti
         </footer>
     </div>
-
+<% const authenticated = email_verified %> <% const user = username %>
 </body>
 <script>
     // listen for incoming messages
@@ -88,11 +88,11 @@
         // give each message a unique ID
         html += "<li id='message-" + snapshot.key + "'>";
         // show delete button if message is sent by me
-        if (snapshot.val().sender == myName) {
-            html += "<button data-id='" + snapshot.key + "' onclick='deleteMessage(this);'>";
-            html += "Delete";
-            html += "</button>";
-        }
+        // if (snapshot.val().sender == myName) {
+        //     html += "<button data-id='" + snapshot.key + "' onclick='deleteMessage(this);'>";
+        //     html += "Delete";
+        //     html += "</button>";
+        // }
         html += "{ " + snapshot.val().sender + " } : " + snapshot.val().message;
         html += "</li>";
 
@@ -112,9 +112,26 @@
         // remove message node
         document.getElementById("message-" + snapshot.key).innerHTML = "This message has been removed";
     });
+
+    let userAuthenticated = "<%= authenticated %>";
+    let myname = "<%=user %>";
+    if (userAuthenticated) {
+      myname = myname;
+    } else {
+      myname = prompt("Please enter your name", "");
+    }
+
+    const sendMessage = () => {
+        let message = document.getElementById("message").value
+        firebase.database().ref("messages").push().set({
+            "sender": myName,
+            "message": message
+        });
+        let message1 = document.getElementById("message")
+        message1.value = ""
+        return false;
+    }
 </script>
-
-
 </div>
 
 </body>
