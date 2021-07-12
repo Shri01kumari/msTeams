@@ -35,7 +35,7 @@ body {
   margin-bottom: 5px;
   border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  justify-content: right;
+  justify-content: center;
 }
 .welcome{
   font-family:"Nunito", sans-serif;

@@ -1,8 +1,5 @@
-console.log("this is coming form script");
-
 const socket = io("/");
 const videoGrid = document.getElementById("video-grid");
-
 socket.emit("new-user", userName);
 const myPeer = new Peer(undefined);
 let myVideoStream;
@@ -39,12 +36,12 @@ navigator.mediaDevices
       connectToNewUser(userId, stream);
     });
     // input value
-    let text = $("#chat_message");
+    let text = $("input#chat_message");
     // when press enter send message
     $("html").keydown(function (e) {
       if (e.which == 13 && text.val().length !== 0) {
         $(".messages").append(
-          `<div class="messages_right"><b>Me:<t></b> ${text.val()} <br></div>`
+          `<div class="messages_right"><b>Me:<t></b> ${text.val()}</div>`
         );
         socket.emit("message", text.val());
         text.val("");
@@ -56,16 +53,7 @@ navigator.mediaDevices
       scrollToBottom();
     });
   });
-// input value
-// let text = $("input");
-// // when press enter send message
-// $('html').keydown(function (e) {
-//   if (e.which == 13 && text.val().length !== 0) {
-//   $('.messages').append(`<div class="messages_right"><b>Me:<t></b> ${text.val()}</div>`);
-//     socket.emit('message', text.val());
-//     text.val('');
-//   }
-// });
+
 socket.on("user-disconnected", (userId) => {
   if (peers[userId]) peers[userId].close();
 });
@@ -74,18 +62,6 @@ myPeer.on("open", (id) => {
   socket.emit("join-room", ROOM_ID, id);
 });
 
-// function connectToNewUser(userId, stream) {
-//   var call = myPeer.call(userId, stream);
-//   var video = document.createElement("video");
-//   call.on("stream", (userVideoStream) => {
-//     addVideoStream(video, userVideoStream);
-//   });
-//   call.on("close", () => {
-//     video.remove();
-//   });
-
-//   peers[userId] = call;
-// }
 const connectToNewUser = (userId, stream) => {
   var call = myPeer.call(userId, stream);
   var video = document.createElement("video");
@@ -365,7 +341,7 @@ async function init(constraints) {
   }
 }
 
-document.querySelector("button#record").addEventListener("click", async () => {
+document.querySelector("button#start").addEventListener("click", async () => {
   document.querySelector("button#record").disabled = true;
   const hasEchoCancellation =
     document.querySelector("#echoCancellation").checked;
