@@ -1,4 +1,4 @@
-###Microsoft-Teams-Clone
+#Microsoft-Teams-Clone
 A real time communication website which allows peers to video call and chat with each other with many extra functionalities.
 
 Functionalities
