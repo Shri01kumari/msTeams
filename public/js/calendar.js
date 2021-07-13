@@ -1,6 +1,5 @@
 $(document).ready(function () {
   $("#calendar").evoCalendar({
-    //settingName: settingValue
     //adding events to calendar
     calendarEvents: [
       {

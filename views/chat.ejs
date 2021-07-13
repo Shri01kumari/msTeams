@@ -22,7 +22,6 @@
     </script>
     <link rel="stylesheet" href="/css/home.css" />
     <link rel="stylesheet" href="/css/chat.css">
-    <!-- <link rel="manifest" href="manifest.json"> -->
 
     <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-auth.js"></script>
@@ -50,8 +49,6 @@
             <div id="wrapper">
                 <div id="menu">
                     <p class="welcome">Welcome, Chat App <b></b></p>
-                    <!-- <Button type="submit" class="login" onclick="google_login()">GOOGLE LOG IN</Button>
-                    <Button type="submit" class="login" onclick="facebook_login()">FACEBOOK LOG IN</Button> -->
                     <div style="clear:both"></div>
                 </div>
 
@@ -60,11 +57,6 @@
 
                     </ul>
                 </div>
-                <!--
-                <form onsubmit="return sendMessage();">
-                    <input name="usermsg" type="text" id="usermsg" size="63" placeholder="Text Message" />
-                    <button id="button" class="button">Send</button>
-                </form> -->
 
 
                 <form onsubmit="return sendMessage();">
@@ -72,7 +64,6 @@
                         autocomplete="off" />
                     <input type="submit" class="button">
                 </form>
-                <!-- <ul id="messages"></ul> -->
             </div>
         </div>
         <footer class="footer">
@@ -87,12 +78,6 @@
         var html = "";
         // give each message a unique ID
         html += "<li id='message-" + snapshot.key + "'>";
-        // show delete button if message is sent by me
-        // if (snapshot.val().sender == myName) {
-        //     html += "<button data-id='" + snapshot.key + "' onclick='deleteMessage(this);'>";
-        //     html += "Delete";
-        //     html += "</button>";
-        // }
         html += "{ " + snapshot.val().sender + " } : " + snapshot.val().message;
         html += "</li>";
 

@@ -12,8 +12,6 @@ const peerServer = ExpressPeerServer(server, {
 const nodemailer = require("nodemailer");
 const { v4: uuidV4 } = require("uuid");
 require("dotenv").config();
-// var smtpTransport = require("nodemailer-smtp-transport");
-// const sendMail = require("./mailDONTUSE");
 const users = {};
 
 //view engine setup
@@ -21,7 +19,7 @@ app.set("view engine", "ejs");
 
 app.use(express.static("public"));
 app.use("/peerjs", peerServer);
-//app.use("trust proxy", true);
+
 
 //user authentication added
 const { auth, requiresAuth } = require("express-openid-connect");
@@ -94,8 +92,6 @@ app.get("/:room", requiresAuth(), (req, res) => {
   });
 });
 
-// console.log(meetId);
-
 //setting up events to listen to
 io.on("connection", (socket) => {
   socket.on("new-user", (username) => {
@@ -165,24 +161,6 @@ app.post("/send", function (req, res) {
     }
   });
 });
-
-// Method-2
-//  ? log message error
-// app.post("/send", function (req, res) {
-//console.log(req.body.receiveremail);
-//res.render("home", { msg: "Email has been sent successfully" });
-//   const receiveremail = req.body.receiveremail;
-//   console.log("Data: ", req.body.receiveremail);
-
-//   sendMail(receiveremail, function (err, data) {
-//     debugger;
-//     if (err) {
-//       res.status(500).json({ message: "Internal Error" });
-//     } else {
-//       res.status({ message: "Email sent!!!" });
-//     }
-//   });
-// });
 
 server.listen(process.env.PORT || 3000, () => {
   console.log("Server started at port 3000");

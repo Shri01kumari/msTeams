@@ -17,10 +17,6 @@ video {
   --width: 35vw;
   width: var(--width);
   height: calc(var(--width) * 0.5625);
-  /* border:5px solid #6264A7;
-    border-radius:10px;
-    padding:0;
-    margin:3px; */
 }
 
 .main__left {
@@ -54,7 +50,6 @@ video {
 
 .messages {
   overflow-wrap: anywhere;
-  /* padding: 0; */
   padding: 2%;
 }
 
@@ -110,12 +105,9 @@ span {
   border-radius: 5px;
 }
 
-/* //change */
 .main__controls__button i {
   font-size: 20px;
 }
-
-.main__controls__block__end {}
 
 .main__right {
   display: flex;
@@ -139,15 +131,12 @@ span {
 }
 
 .main__message_container {
-  /* padding: 22px 12px; */
   display: flex;
   height: 76px;
-  /* border: 2px solid black; */
 }
 
 .main__message_container input {
   flex-grow: 1;
-  /* background-color: transparent; */
   border: none;
   color: #46474e;
   padding: 8px;
@@ -159,7 +148,6 @@ span {
   outline: #46474e;
   outline-style: solid;
   outline-width: 3px;
-  /* border: 3px solid #46474e; */
 }
 
 .leave_meeting {
@@ -192,14 +180,6 @@ p.borderBelow {
   margin: 0 0 20px 0;
   padding: 0 0 20px 0;
 }
-
-/* added */
-/* video {
-  vertical-align: top;
-  --width: 25vw;
-  width: var(--width);
-  height: calc(var(--width) * 0.5625);
-} */
 
 video:last-of-type {
   margin: 0 0 20px 0;
@@ -342,10 +322,8 @@ progress {
 /* The Close Button */
 .close-menu {
   color: #3c3a3a;
-  /* float: right; */
   font-size: 28px;
   font-weight: bold;
-  /* left: 12%; */
   display: flex;
   justify-content: flex-end;
 }
@@ -399,12 +377,10 @@ progress {
 
 .btn__container button:hover {
   box-shadow: rgb(229, 231, 241) 0px 3px 8px;
-  /* cursor: pointer; */
 }
 
 
 .errorMsg {
-  /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
   color: #ee3d34;
   padding: 10px;
   width: fit-content;
@@ -479,12 +455,10 @@ progress {
 
 .add-participant-button:hover {
   box-shadow: rgb(163, 177, 255) 0px 3px 8px;
-  /* cursor: pointer; */
 }
 
 #mail-form>input {
   background: #fff;
-  /* border: 2px solid #fff; */
   border-radius: 5px;
   border: none;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;

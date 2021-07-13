@@ -6,25 +6,7 @@
     flex-direction: column;
     align-items: center;
     padding: 15px;
-    /* backdrop-filter: blur(15px); */
 }
-
-/* .profile:before {
-    content: '';
-    display: block;
-    background: #d1b4d1;
-
-
-    background-size: cover;
-    -webkit-filter: blur(5px);
-    -moz-filter: blur(5px);
-    -o-filter: blur(5px);
-    -ms-filter: blur(5px);
-    filter: blur(26px);
-    width: 92%;
-    height: 75%;
-    position: absolute;
-} */
 
 .profile-banner {
     height: 50%;
@@ -79,16 +61,6 @@ button {
     padding: 20px;
 }
 
-/* a {
-    color: transparent;
-}
-
-a:hover {
-    color: transparent;
-    text-decoration: none;
-    outline: none;
-} */
-
 .custom-btn-alpha {
     width: 130px;
     height: 40px;
@@ -131,10 +103,6 @@ a:hover {
     right: 0;
     bottom: 0;
     background: #c797eb;
-    /*box-shadow:  4px 4px 6px 0 rgba(255,255,255,.5),
-              -4px -4px 6px 0 rgba(116, 125, 136, .2),
-    inset -4px -4px 6px 0 rgba(255,255,255,.5),
-    inset 4px 4px 6px 0 rgba(116, 125, 136, .3);*/
     transition: all 0.3s ease;
 }
 
@@ -171,10 +139,6 @@ a:hover {
     left: 0;
     top: 0;
     background: #c797eb;
-    /*box-shadow:  4px 4px 6px 0 rgba(255,255,255,.5),
-              -4px -4px 6px 0 rgba(116, 125, 136, .2),
-    inset -4px -4px 6px 0 rgba(255,255,255,.5),
-    inset 4px 4px 6px 0 rgba(116, 125, 136, .3);*/
     transition: all 0.3s ease;
 }
 
