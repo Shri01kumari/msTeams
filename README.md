@@ -17,7 +17,7 @@ A real time communication web app which allows users to connect through video ca
 - Invite participants via mail
 - Dynamic user profile page
 
-  ## Demo
+## Demo
 
 https://teams-clone-appv3.herokuapp.com/
 
