@@ -165,3 +165,6 @@ app.post("/send", function (req, res) {
 server.listen(process.env.PORT || 3000, () => {
   console.log("Server started at port 3000");
 });
+
+// For Testing Purpose
+// Change the BASE_URL in .env file to http://localhost:3000
