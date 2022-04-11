@@ -24,13 +24,6 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.9"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Shri01kumari/msTeams.git"
-  },
-  "bugs": {
-    "url": "https://github.com/Shri01kumari/msTeams/issues"
-  },
-  "homepage": "https://github.com/Shri01kumari/msTeams#readme"
+  }
+  
 }
